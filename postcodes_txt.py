@@ -1,22 +1,21 @@
 import requests
 import json
 
-arguments = "N169LN"
+def get_post_code(input_post_code):
+    try:
+        request_post_code = requests.get('https://api.postcodes.io/postcodes/' + input_post_code)
+        return_postcode = request_post_code.json()["result"]["postcode"]
 
-request_post_code = requests.get('https://api.postcodes.io/postcodes/' + arguments)
+        return return_postcode
+    except ConnectionError:
+        print("Not a valid URL")
 
-converting_to_json = request_post_code.json()["result"]["postcode"]
-
-#print(converting_to_json)
-
-print(converting_to_json)
 
 def append_to_file(file, order_item):
     try:
-        opened_file = open(file, 'a')
-        opened_file.write(order_item)
+        with open(file, 'a') as opened_file:
+            opened_file.write(order_item + '\n')
 
-        opened_file.close()
     except FileNotFoundError:
         print("File not found")
 
