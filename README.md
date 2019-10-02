@@ -1,7 +1,7 @@
 # Postcodes.io to txt
 
 Objectives:
-- make API GGET call
+- make API GET call
 - Write some details of the post code to TXT
 
 http://postcodes.io/
